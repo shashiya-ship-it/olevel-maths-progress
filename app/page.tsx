@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { supabase } from "@/lib/supabase";
+import type { User } from "@supabase/supabase-js";
 
 type Profile = {
   full_name: string | null;
@@ -14,7 +15,7 @@ type Profile = {
 export default function Home() {
   const pathname = usePathname();
 
-  const [user, setUser] = useState<any>(null);
+  const [user, setUser] = useState<User | null>(null);
   const [profile, setProfile] = useState<Profile | null>(null);
   const [avatarUrl, setAvatarUrl] = useState("/student-avatar.png");
   const [photoLoading, setPhotoLoading] = useState(false);
